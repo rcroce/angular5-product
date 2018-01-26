@@ -1,0 +1,8 @@
+/* .navbar-default.transparent {
+  background: 0 0;
+} */
+
+a {
+  cursor: pointer;
+  /* background-color: transparent; */
+}

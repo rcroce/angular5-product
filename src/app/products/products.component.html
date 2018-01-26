@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <section>
+        <header class="header">
+          <div class="row">
+            <div class="col-md-6">
+              <p>
+                <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search...">
+              </p>
+            </div>
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-2">
+                <a routerLink="/products/new" class="btn btn-primary">New Product</a>
+            </div>
+          </div>
+        </header>
+      </section>
+      <section class="main">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Quantity</th>
+              <th>Action</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of filteredProducts">
+            <!-- <tr *ngFor="let p of products"> -->
+              <td>{{ p.id }}</td>
+              <td>{{ p.name }}</td>
+              <td>{{ p.quantity }}</td>
+              <td>
+                <a [routerLink]="['/products/', p.id]" class="btn btn-success btn-sm">Update</a>
+                <button (click)="delete(p.id)" type="button" class="btn btn-danger btn-sm">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</div>

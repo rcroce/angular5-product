@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input #name="ngModel" [ngModel]="product.name" name="name" id="name" type="text" class="form-control"
+        required maxlength="45">
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+          <div *ngIf="name?.errors.required">Name is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity</label>
+          <input #quantity="ngModel" [ngModel]="product.quantity" name="quantity" id="quantity" type="number" class="form-control"
+          required max=999999999 [min]="0">
+        <div class="alert alert-danger" *ngIf="quantity.touched && quantity.invalid">
+          <div *ngIf="quantity?.errors.required">Quantity is required.</div>
+          <div *ngIf="quantity?.errors.max">Quantity must be maximum 999999999.</div>
+          <div *ngIf="quantity?.errors.min">Quantity should be 0 or higher.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" [disabled]="f.invalid">Save</button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">Cancel</button>
+    </form>
+  </div>
+</div>
